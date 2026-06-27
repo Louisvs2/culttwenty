@@ -36,7 +36,7 @@ export function VideoHero({
   const contentY = useTransform(scrollYProgress, [0, 1], [0, 120]);
 
   return (
-    <section ref={sectionRef} className="relative h-[100vh] w-full overflow-hidden">
+    <section ref={sectionRef} className="relative h-screen h-[100dvh] w-full overflow-hidden">
       <motion.div style={{ scale: videoScale }} className="absolute inset-0">
         <VideoPlayer
           src="/videos/showreel.mp4"
@@ -79,7 +79,7 @@ export function VideoHero({
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.8 }}
-            className="mt-10 flex items-center gap-6"
+            className="mt-10 flex flex-wrap items-center gap-4 sm:gap-6"
           >
             <MagneticButton>
               <Button href={primaryCta.href} variant="primary" withIcon>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Volume2, VolumeX } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -20,11 +20,34 @@ export function VideoPlayer({
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isMuted, setIsMuted] = useState(true);
 
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Mobile browsers (especially iOS Safari) check the *property*, not just
+    // the JSX/HTML attribute, before allowing autoplay. Setting it explicitly
+    // here — before calling play() — is what makes autoplay actually fire on
+    // first load instead of sitting paused until a user gesture.
+    video.muted = true;
+    video.defaultMuted = true;
+
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Autoplay can still be refused in rare policy/data-saver cases —
+        // the poster image remains visible, no broken UI either way.
+      });
+    }
+  }, []);
+
   function toggleMute() {
     const video = videoRef.current;
     if (!video) return;
     video.muted = !video.muted;
     setIsMuted(video.muted);
+    if (!video.muted) {
+      video.play().catch(() => undefined);
+    }
   }
 
   return (

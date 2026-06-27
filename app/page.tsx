@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { VideoHero } from "@/components/sections/VideoHero";
+import { TrustedBy } from "@/components/sections/TrustedBy";
 import { Services } from "@/components/sections/Services";
 import { Container } from "@/components/ui/Container";
 import { SectionTitle } from "@/components/ui/SectionTitle";
@@ -17,6 +18,7 @@ export default function HomePage() {
   return (
     <>
       <VideoHero />
+      <TrustedBy />
       <Services />
       <section className="bg-paper-dim py-section">
         <Container>
