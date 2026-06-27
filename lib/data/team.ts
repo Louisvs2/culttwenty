@@ -1,11 +1,4 @@
-import type {
-  ProcessStep,
-  StatEntry,
-  TeamMember,
-  Testimonial,
-  TimelineEntry,
-  TrustedLogo,
-} from "@/types";
+import type { StatEntry, TeamMember, TimelineEntry } from "@/types";
 
 export const teamMembers: TeamMember[] = [
   {
@@ -73,70 +66,4 @@ export const stats: StatEntry[] = [
   { value: "5", label: "Experten im Team" },
   { value: "120+", label: "Realisierte Projekte" },
   { value: "38", label: "Aktive Markenpartner" },
-];
-
-export const testimonials: Testimonial[] = [
-  {
-    quote:
-      "CultTwenty hat unsere Marke nicht nur visuell, sondern strategisch neu gedacht. Das Ergebnis übertrifft alles, was wir zuvor hatten.",
-    name: "Anna Berghoff",
-    role: "Head of Brand",
-    company: "Nordlicht Living",
-  },
-  {
-    quote:
-      "Selten erlebt man ein Team, das Film, Web und 3D gleichermaßen exzellent beherrscht — und das alles aus einer Hand.",
-    name: "Markus Feldt",
-    role: "Gründer",
-    company: "Atlas Mobility",
-  },
-  {
-    quote:
-      "Die Zusammenarbeit war auf Augenhöhe, schnell und extrem präzise. Jedes Detail hatte einen Grund.",
-    name: "Sophie Lang",
-    role: "Marketing Director",
-    company: "Fernweh Reisen",
-  },
-];
-
-export const processSteps: ProcessStep[] = [
-  {
-    index: "01",
-    title: "Discovery",
-    description:
-      "Wir verstehen Marke, Markt und Ziel, bevor wir eine einzige Idee entwickeln.",
-  },
-  {
-    index: "02",
-    title: "Strategie",
-    description:
-      "Aus Erkenntnissen wird eine klare kreative Richtung mit messbaren Zielen.",
-  },
-  {
-    index: "03",
-    title: "Konzeption",
-    description:
-      "Wir entwickeln Konzept, Bildsprache und Struktur — abgestimmt auf jeden Kanal.",
-  },
-  {
-    index: "04",
-    title: "Produktion",
-    description:
-      "Dreh, Design und Entwicklung mit höchstem Anspruch an Handwerk und Detail.",
-  },
-  {
-    index: "05",
-    title: "Launch & Wirkung",
-    description:
-      "Wir begleiten den Launch und messen die Wirkung gegen die definierten Ziele.",
-  },
-];
-
-export const trustedLogos: TrustedLogo[] = [
-  { name: "Nordlicht" },
-  { name: "Atlas Mobility" },
-  { name: "Fernweh" },
-  { name: "Fabrik Studios" },
-  { name: "Kontur" },
-  { name: "Monolith Audio" },
 ];

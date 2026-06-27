@@ -7,6 +7,7 @@ export const services: Service[] = [
     index: "01",
     title: "Videoproduktion",
     shortTitle: "Video",
+    pitch: "Markenfilme, die hängen bleiben — von der Idee bis zum letzten Schnitt.",
     description:
       "Markenfilme, Imagefilme und Social-Content, die nicht nur gesehen, sondern erinnert werden. Von der Konzeption über den Dreh bis zur finalen Farbkorrektur — wir produzieren Bewegtbild, das eine Haltung hat.",
     capabilities: [
@@ -23,6 +24,7 @@ export const services: Service[] = [
     index: "02",
     title: "Websites",
     shortTitle: "Web",
+    pitch: "Websites, die schneller laden als der Wettbewerb nachdenkt.",
     description:
       "Digitale Erlebnisse für Marken, die online genauso überzeugen müssen wie offline. Wir gestalten und entwickeln Websites, die schnell laden, klar kommunizieren und sich hochwertig anfühlen — auf jedem Endgerät.",
     capabilities: [
@@ -39,6 +41,7 @@ export const services: Service[] = [
     index: "03",
     title: "3D",
     shortTitle: "3D",
+    pitch: "Produktwelten in 3D — fotorealistisch oder bewusst surreal.",
     description:
       "Dreidimensionale Produktwelten, Renderings und Animationen für Marken, die Realität neu inszenieren wollen. Wir bauen digitale Räume und Objekte, die fotorealistisch wirken — oder bewusst nicht.",
     capabilities: [
@@ -55,6 +58,7 @@ export const services: Service[] = [
     index: "04",
     title: "Pitch Decks",
     shortTitle: "Pitch",
+    pitch: "Pitch Decks, die überzeugen, bevor der erste Satz fällt.",
     description:
       "Präsentationen, die überzeugen, bevor das erste Wort gesprochen ist. Wir gestalten Pitch Decks für Funding-Runden, Sales-Prozesse und Markenpräsentationen mit klarer Struktur und starker visueller Sprache.",
     capabilities: [
@@ -67,3 +71,6 @@ export const services: Service[] = [
     gallery: buildGallery("culttwenty-gallery-pitch"),
   },
 ];
+
+// Combined pool for the single sitewide "Raster mit allen Projektbildern".
+export const allProjectImages: string[] = services.flatMap((service) => service.gallery);

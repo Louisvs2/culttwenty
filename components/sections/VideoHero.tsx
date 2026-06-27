@@ -10,7 +10,21 @@ import { AnimatedHeading } from "@/components/ui/AnimatedHeading";
 import { RevealText } from "@/components/ui/RevealText";
 import { VideoPlayer } from "@/components/ui/VideoPlayer";
 
-export function VideoHero() {
+interface VideoHeroProps {
+  eyebrow?: string;
+  headline?: string;
+  subheadline?: string;
+  primaryCta?: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
+}
+
+export function VideoHero({
+  eyebrow = "Creative Agency · Film · Web · 3D · Pitch",
+  headline = "Marken, die im Gedächtnis bleiben.",
+  subheadline = "CultTwenty entwickelt Film, Web, 3D und Pitch Decks für Marken mit Anspruch — präzise, hochwertig und mit klarer Haltung.",
+  primaryCta = { label: "Projekt starten", href: "/contact" },
+  secondaryCta = { label: "Unsere Leistungen", href: "/services" },
+}: VideoHeroProps) {
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -43,13 +57,13 @@ export function VideoHero() {
         <Container>
           <span className="mb-6 flex items-center gap-3 font-mono text-eyebrow uppercase text-paper/60">
             <span className="h-1.5 w-1.5 rounded-full bg-signal" aria-hidden="true" />
-            Creative Agency · Film · Web · 3D · Pitch
+            {eyebrow}
           </span>
 
           <AnimatedHeading
             as="h1"
             trigger="load"
-            text="Marken, die im Gedächtnis bleiben."
+            text={headline}
             className="max-w-5xl font-display text-display-1 font-medium text-paper"
           />
 
@@ -58,8 +72,7 @@ export function VideoHero() {
             as="p"
             className="mt-8 max-w-lg text-body-lg text-paper/75"
           >
-            CultTwenty entwickelt Film, Web, 3D und Pitch Decks für Marken mit
-            Anspruch — präzise, hochwertig und mit klarer Haltung.
+            {subheadline}
           </RevealText>
 
           <motion.div
@@ -69,12 +82,12 @@ export function VideoHero() {
             className="mt-10 flex items-center gap-6"
           >
             <MagneticButton>
-              <Button href="/contact" variant="primary" withIcon>
-                Projekt starten
+              <Button href={primaryCta.href} variant="primary" withIcon>
+                {primaryCta.label}
               </Button>
             </MagneticButton>
-            <Button href="/services" variant="outline-light">
-              Unsere Leistungen
+            <Button href={secondaryCta.href} variant="outline-light">
+              {secondaryCta.label}
             </Button>
           </motion.div>
         </Container>

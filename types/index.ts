@@ -16,6 +16,7 @@ export interface Service {
   index: string;
   title: string;
   shortTitle: string;
+  pitch: string;
   description: string;
   capabilities: string[];
   image: string;
@@ -60,27 +61,10 @@ export interface StatEntry {
   label: string;
 }
 
-export interface Testimonial {
-  quote: string;
-  name: string;
-  role: string;
-  company: string;
-}
-
-export interface ProcessStep {
-  index: string;
-  title: string;
-  description: string;
-}
-
 export interface ContactFormValues {
   name: string;
   email: string;
   company: string;
   budget: string;
   message: string;
-}
-
-export interface TrustedLogo {
-  name: string;
 }
