@@ -70,7 +70,7 @@ export function AnimatedHeading({
   }, [text, delay, trigger]);
 
   return (
-    <Tag ref={containerRef} className={cn("overflow-hidden", className)}>
+    <Tag ref={containerRef} className={cn("break-words", className)}>
       {words.map((word, index) => (
         <span key={`${word}-${index}`} className="reveal-mask mr-[0.28em] inline-block">
           <span data-word className="inline-block will-change-transform">

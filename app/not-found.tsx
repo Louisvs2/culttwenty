@@ -25,8 +25,8 @@ export default function NotFound() {
           <Button href="/" variant="primary" withIcon>
             Zur Startseite
           </Button>
-          <Button href="/work" variant="secondary">
-            Unsere Arbeit
+          <Button href="/services" variant="secondary">
+            Unsere Leistungen
           </Button>
         </div>
       </Container>

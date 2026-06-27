@@ -73,8 +73,8 @@ export function VideoHero() {
                 Projekt starten
               </Button>
             </MagneticButton>
-            <Button href="/work" variant="outline-light">
-              Unsere Arbeit
+            <Button href="/services" variant="outline-light">
+              Unsere Leistungen
             </Button>
           </motion.div>
         </Container>

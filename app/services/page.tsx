@@ -34,8 +34,8 @@ export default function ServicesPage() {
         </Container>
       </section>
 
-      {services.map((service, index) => (
-        <ServiceSection key={service.id} service={service} reverse={index % 2 === 1} />
+      {services.map((service) => (
+        <ServiceSection key={service.id} service={service} />
       ))}
 
       <CTA />

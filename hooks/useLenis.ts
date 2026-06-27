@@ -20,10 +20,10 @@ export function useLenis(): void {
     }
 
     const lenis = new Lenis({
-      duration: 1.15,
+      duration: 1.0,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      wheelMultiplier: 1,
+      wheelMultiplier: 1.1,
       touchMultiplier: 1.1,
     });
 

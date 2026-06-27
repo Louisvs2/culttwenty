@@ -83,23 +83,30 @@ button {
   font-size: 0.875rem;
 }
 
-/* Glass navigation */
+/* Glass navigation — isolate as its own compositing layer (transform: translateZ(0))
+   so the backdrop-filter sample is cached per-layer instead of recomputed against
+   the full page stack on every scroll frame. Lower blur radius = cheaper sample. */
 .glass {
-  background-color: rgba(247, 246, 242, 0.72);
-  backdrop-filter: blur(16px) saturate(140%);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  background-color: rgba(247, 246, 242, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transform: translateZ(0);
 }
 
 .glass-dark {
-  background-color: rgba(10, 10, 10, 0.6);
-  backdrop-filter: blur(16px) saturate(140%);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  background-color: rgba(10, 10, 10, 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transform: translateZ(0);
 }
 
-/* Noise grain overlay — positioning is handled by Tailwind utilities on the element */
+/* Noise grain overlay — positioning is handled by Tailwind utilities on the element.
+   Intentionally NO mix-blend-mode here: blending a full-viewport fixed layer forces
+   the browser to recomposite the entire page on every scroll/paint frame, which is
+   the single most expensive thing a "decorative" layer can do. Opacity alone keeps
+   the grain visible at near-zero cost. */
 .noise-overlay {
-  opacity: 0.045;
-  mix-blend-mode: overlay;
+  opacity: 0.05;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-repeat: repeat;
 }
@@ -165,7 +172,6 @@ button {
 /* Reveal mask helper for text/image reveal animations */
 .reveal-mask {
   overflow: hidden;
-  display: block;
 }
 
 .text-balance {

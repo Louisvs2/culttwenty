@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { VideoHero } from "@/components/sections/VideoHero";
 import { TrustedBy } from "@/components/sections/TrustedBy";
 import { Services } from "@/components/sections/Services";
-import { SelectedWork } from "@/components/sections/SelectedWork";
 import { AboutPreview } from "@/components/sections/AboutPreview";
 import { Process } from "@/components/sections/Process";
 import { Testimonials } from "@/components/sections/Testimonials";
@@ -21,7 +20,6 @@ export default function HomePage() {
       <VideoHero />
       <TrustedBy />
       <Services />
-      <SelectedWork />
       <AboutPreview />
       <Process />
       <Testimonials />
