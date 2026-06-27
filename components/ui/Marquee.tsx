@@ -34,6 +34,8 @@ export function Marquee({
       <div className="marquee-track" data-direction={direction}>
         {renderItems("a")}
         {renderItems("b")}
+        {renderItems("c")}
+        {renderItems("d")}
       </div>
     </div>
   );
