@@ -1,85 +1,59 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { Volume2, VolumeX } from "lucide-react";
+import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 
 interface VideoPlayerProps {
   src: string;
-  poster: string;
   className?: string;
-  showMuteToggle?: boolean;
 }
 
-export function VideoPlayer({
-  src,
-  poster,
-  className,
-  showMuteToggle = true,
-}: VideoPlayerProps) {
+/**
+ * Pure decorative background video: autoplays immediately, muted, looping,
+ * with zero user-facing controls and no placeholder/poster image. Nothing
+ * about it is interactive — pointer-events are disabled on the element
+ * itself so no native browser overlay (e.g. Picture-in-Picture hover button)
+ * can be triggered either.
+ */
+export function VideoPlayer({ src, className }: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [isMuted, setIsMuted] = useState(true);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
     // Mobile browsers (especially iOS Safari) check the *property*, not just
-    // the JSX/HTML attribute, before allowing autoplay. Setting it explicitly
-    // here — before calling play() — is what makes autoplay actually fire on
-    // first load instead of sitting paused until a user gesture.
+    // the JSX/HTML attribute, before allowing autoplay — setting it here
+    // explicitly, before calling play(), is what makes autoplay reliably
+    // fire on first load.
     video.muted = true;
     video.defaultMuted = true;
 
     const playPromise = video.play();
     if (playPromise !== undefined) {
       playPromise.catch(() => {
-        // Autoplay can still be refused in rare policy/data-saver cases —
-        // the poster image remains visible, no broken UI either way.
+        // Extremely rare autoplay refusal (e.g. aggressive data-saver mode).
+        // There's no poster/fallback UI by design — the dark hero overlay
+        // covers this gracefully either way.
       });
     }
   }, []);
-
-  function toggleMute() {
-    const video = videoRef.current;
-    if (!video) return;
-    video.muted = !video.muted;
-    setIsMuted(video.muted);
-    if (!video.muted) {
-      video.play().catch(() => undefined);
-    }
-  }
 
   return (
     <div className={cn("relative h-full w-full overflow-hidden", className)}>
       <video
         ref={videoRef}
-        className="h-full w-full object-cover"
+        className="pointer-events-none h-full w-full object-cover"
         autoPlay
         muted
         loop
         playsInline
-        preload="metadata"
-        poster={poster}
-        aria-label="CultTwenty Showreel"
+        preload="auto"
+        disablePictureInPicture
+        aria-hidden="true"
       >
         <source src={src} type="video/mp4" />
       </video>
-      {showMuteToggle ? (
-        <button
-          type="button"
-          onClick={toggleMute}
-          data-cursor="pointer"
-          aria-label={isMuted ? "Ton aktivieren" : "Ton deaktivieren"}
-          className="absolute bottom-8 right-8 z-10 flex h-12 w-12 items-center justify-center rounded-full border border-paper/30 text-paper transition-colors duration-300 hover:border-paper"
-        >
-          {isMuted ? (
-            <VolumeX className="h-4 w-4" aria-hidden="true" />
-          ) : (
-            <Volume2 className="h-4 w-4" aria-hidden="true" />
-          )}
-        </button>
-      ) : null}
     </div>
   );
 }

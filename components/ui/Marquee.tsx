@@ -19,18 +19,11 @@ export function Marquee({
         <span
           key={`${keyPrefix}-${index}`}
           className={cn(
-            "mx-6 flex items-center font-display text-display-3 font-medium",
+            "mx-10 flex items-center font-display text-display-3 font-medium uppercase tracking-wide",
             variant === "dark" ? "text-paper" : "text-ink",
           )}
         >
           {item}
-          <span
-            aria-hidden="true"
-            className={cn(
-              "ml-12 inline-block h-3 w-3 rounded-full",
-              variant === "dark" ? "bg-signal" : "bg-signal",
-            )}
-          />
         </span>
       ))}
     </>

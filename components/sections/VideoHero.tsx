@@ -38,10 +38,7 @@ export function VideoHero({
   return (
     <section ref={sectionRef} className="relative h-screen h-[100dvh] w-full overflow-hidden">
       <motion.div style={{ scale: videoScale }} className="absolute inset-0">
-        <VideoPlayer
-          src="/videos/showreel.mp4"
-          poster="https://picsum.photos/seed/culttwenty-hero/1920/1080"
-        />
+        <VideoPlayer src="/videos/showreel.mp4" />
       </motion.div>
 
       <motion.div
