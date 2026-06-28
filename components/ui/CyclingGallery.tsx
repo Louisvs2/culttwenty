@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -13,10 +13,10 @@ interface CyclingGalleryProps {
 }
 
 /**
- * A grid of cells that independently cycle through a shared image pool and
- * cross-fade between them — a placeholder "wall" for project imagery before
- * real photos/videos exist. Designed so that later, swapping `images` for one
- * shared, site-wide pool turns this into the single combined gallery.
+ * A grid of cells that cross-fade through a shared image pool, coordinated
+ * from a single source of truth so the same image can never appear in two
+ * cells at once. One cell at a time gets reassigned to a random image that
+ * isn't currently shown anywhere else in the grid.
  */
 export function CyclingGallery({
   images,
@@ -24,18 +24,53 @@ export function CyclingGallery({
   cellCount = 16,
   className,
 }: CyclingGalleryProps) {
-  const cells = useMemo(
-    () =>
-      Array.from({ length: cellCount }, (_, i) => ({
-        id: i,
-        startIndex: images.length > 0 ? i % images.length : 0,
-        // Stagger cadence and phase per cell so the grid swaps organically
-        // instead of every tile flipping in lockstep.
-        intervalMs: 3200 + (i % 5) * 650,
-        delayMs: (i * 420) % 2400,
-      })),
-    [cellCount, images.length],
+  const count = Math.min(cellCount, images.length);
+
+  const [assignments, setAssignments] = useState<number[]>(() =>
+    Array.from({ length: count }, (_, i) => i),
   );
+
+  const assignmentsRef = useRef(assignments);
+  assignmentsRef.current = assignments;
+
+  useEffect(() => {
+    if (images.length <= count) return; // no spare images to rotate in
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (prefersReducedMotion) return;
+
+    let timeoutId: number;
+
+    function scheduleNext() {
+      const delay = 900 + Math.random() * 1100;
+      timeoutId = window.setTimeout(() => {
+        const current = assignmentsRef.current;
+        const used = new Set(current);
+        const available = images
+          .map((_, idx) => idx)
+          .filter((idx) => !used.has(idx));
+
+        if (available.length > 0) {
+          const cellToUpdate = Math.floor(Math.random() * current.length);
+          const newImageIndex =
+            available[Math.floor(Math.random() * available.length)] ?? available[0];
+          if (newImageIndex !== undefined) {
+            const next = [...current];
+            next[cellToUpdate] = newImageIndex;
+            setAssignments(next);
+          }
+        }
+
+        scheduleNext();
+      }, delay);
+    }
+
+    scheduleNext();
+
+    return () => window.clearTimeout(timeoutId);
+  }, [images, count]);
 
   if (images.length === 0) return null;
 
@@ -46,55 +81,21 @@ export function CyclingGallery({
         className,
       )}
     >
-      {cells.map((cell) => (
-        <GalleryCell key={cell.id} images={images} alt={alt} {...cell} />
+      {assignments.map((imageIndex, cellId) => (
+        <GalleryCell key={cellId} src={images[imageIndex] ?? images[0]} alt={alt} />
       ))}
     </div>
   );
 }
 
-interface GalleryCellProps {
-  images: string[];
-  alt: string;
-  startIndex: number;
-  intervalMs: number;
-  delayMs: number;
-}
-
-function GalleryCell({ images, alt, startIndex, intervalMs, delayMs }: GalleryCellProps) {
-  const [index, setIndex] = useState(startIndex);
-
-  useEffect(() => {
-    if (images.length <= 1) return;
-
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    if (prefersReducedMotion) return;
-
-    let intervalId: number | undefined;
-
-    const timeoutId = window.setTimeout(() => {
-      intervalId = window.setInterval(() => {
-        setIndex((prev) => (prev + 1) % images.length);
-      }, intervalMs);
-    }, delayMs);
-
-    return () => {
-      window.clearTimeout(timeoutId);
-      if (intervalId) window.clearInterval(intervalId);
-    };
-  }, [images.length, intervalMs, delayMs]);
-
-  const currentSrc = images[index] ?? images[0];
-
-  if (!currentSrc) return null;
+function GalleryCell({ src, alt }: { src?: string; alt: string }) {
+  if (!src) return null;
 
   return (
     <div className="relative aspect-[4/5] overflow-hidden rounded-md bg-ink/5">
       <AnimatePresence>
         <motion.div
-          key={`${index}-${currentSrc}`}
+          key={src}
           className="absolute inset-0"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -102,7 +103,7 @@ function GalleryCell({ images, alt, startIndex, intervalMs, delayMs }: GalleryCe
           transition={{ duration: 1.2, ease: "easeInOut" }}
         >
           <Image
-            src={currentSrc}
+            src={src}
             alt={alt}
             fill
             sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 50vw"
