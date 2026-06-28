@@ -21,7 +21,7 @@ interface CyclingGalleryProps {
 export function CyclingGallery({
   images,
   alt,
-  cellCount = 10,
+  cellCount = 16,
   className,
 }: CyclingGalleryProps) {
   const cells = useMemo(

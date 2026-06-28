@@ -1,5 +1,4 @@
 import type { Service } from "@/types";
-import { buildGallery } from "./gallery";
 
 export const services: Service[] = [
   {
@@ -17,7 +16,6 @@ export const services: Service[] = [
       "Color Grading & Sound Design",
     ],
     image: "https://picsum.photos/seed/culttwenty-video/1600/2000",
-    gallery: buildGallery("culttwenty-gallery-video"),
   },
   {
     id: "web",
@@ -34,7 +32,6 @@ export const services: Service[] = [
       "Performance & SEO",
     ],
     image: "https://picsum.photos/seed/culttwenty-web/1600/2000",
-    gallery: buildGallery("culttwenty-gallery-web"),
   },
   {
     id: "3d",
@@ -51,7 +48,6 @@ export const services: Service[] = [
       "Virtuelle Produktwelten",
     ],
     image: "https://picsum.photos/seed/culttwenty-3d/1600/2000",
-    gallery: buildGallery("culttwenty-gallery-3d"),
   },
   {
     id: "pitch",
@@ -68,9 +64,5 @@ export const services: Service[] = [
       "Storytelling & Struktur",
     ],
     image: "https://picsum.photos/seed/culttwenty-pitch/1600/2000",
-    gallery: buildGallery("culttwenty-gallery-pitch"),
   },
 ];
-
-// Combined pool for the single sitewide "Raster mit allen Projektbildern".
-export const allProjectImages: string[] = services.flatMap((service) => service.gallery);

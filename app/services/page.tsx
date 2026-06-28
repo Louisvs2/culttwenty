@@ -4,7 +4,7 @@ import { Services } from "@/components/sections/Services";
 import { Container } from "@/components/ui/Container";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { CyclingGallery } from "@/components/ui/CyclingGallery";
-import { allProjectImages } from "@/lib/data/services";
+import { allProjectImages } from "@/lib/data/project-images";
 
 export const metadata: Metadata = {
   title: "Services",

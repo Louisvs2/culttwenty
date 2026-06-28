@@ -20,7 +20,6 @@ export interface Service {
   description: string;
   capabilities: string[];
   image: string;
-  gallery: string[];
 }
 
 export interface WorkCategory {
