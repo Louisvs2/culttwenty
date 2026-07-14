@@ -30,34 +30,22 @@ export const teamMembers: TeamMember[] = [
 
 export const timeline: TimelineEntry[] = [
   {
-    year: "2015",
+    year: "Davor",
+    title: "Als Einzelperson",
+    description:
+      "Vor der Gründung entstehen erste Projekte in Eigenregie — als Einzelperson mit Fokus auf Film, Design und digitale Markenauftritte.",
+  },
+  {
+    year: "2024",
     title: "Gründung",
     description:
-      "CultTwenty startet als kleines Filmstudio mit dem Anspruch, Markenfilme anders zu denken.",
-  },
-  {
-    year: "2018",
-    title: "Erweiterung um Web",
-    description:
-      "Die ersten digitalen Markenauftritte entstehen — Film und Web wachsen als ein Designsystem zusammen.",
-  },
-  {
-    year: "2021",
-    title: "3D & Visualisierung",
-    description:
-      "Mit wachsender Nachfrage nach digitalen Produktwelten bauen wir ein eigenes 3D-Team auf.",
-  },
-  {
-    year: "2023",
-    title: "Internationale Kunden",
-    description:
-      "Erste Projekte für Kunden außerhalb der DACH-Region — Pitch Decks werden zur vierten Disziplin.",
+      "Aus der Einzelarbeit wird CultTwenty — eine eigenständige Creative Agency mit klarer Haltung für Film, Web, 3D und Pitch Decks.",
   },
   {
     year: "2026",
     title: "Heute",
     description:
-      "Ein interdisziplinäres Team aus fünf Experten mit über zehn Jahren gemeinsamer Erfahrung.",
+      "CultTwenty entwickelt visuelle Identitäten für Marken mit Anspruch — präzise, hochwertig und interdisziplinär gedacht.",
   },
 ];
 
