@@ -2,27 +2,27 @@ import type { StatEntry, TeamMember, TimelineEntry } from "@/types";
 
 export const teamMembers: TeamMember[] = [
   {
-    name: "Louis Reinecke",
+    id: "team-01",
     role: "Creative Director & Gründer",
     image: "https://picsum.photos/seed/culttwenty-team-01/800/1000",
   },
   {
-    name: "Mara Lindqvist",
+    id: "team-02",
     role: "Lead Designer",
     image: "https://picsum.photos/seed/culttwenty-team-02/800/1000",
   },
   {
-    name: "Jonah Weber",
+    id: "team-03",
     role: "Director of Photography",
     image: "https://picsum.photos/seed/culttwenty-team-03/800/1000",
   },
   {
-    name: "Elina Voss",
+    id: "team-04",
     role: "Lead Developer",
     image: "https://picsum.photos/seed/culttwenty-team-04/800/1000",
   },
   {
-    name: "Tom Achterberg",
+    id: "team-05",
     role: "3D & Motion Artist",
     image: "https://picsum.photos/seed/culttwenty-team-05/800/1000",
   },
@@ -30,39 +30,27 @@ export const teamMembers: TeamMember[] = [
 
 export const timeline: TimelineEntry[] = [
   {
-    year: "2015",
+    year: "2020",
+    title: "Als Einzelperson",
+    description:
+      "Vor der Gründung entstehen erste Projekte in Eigenregie — als Einzelperson mit Fokus auf Film, Design und digitale Markenauftritte.",
+  },
+  {
+    year: "2024",
     title: "Gründung",
     description:
-      "CultTwenty startet als kleines Filmstudio mit dem Anspruch, Markenfilme anders zu denken.",
-  },
-  {
-    year: "2018",
-    title: "Erweiterung um Web",
-    description:
-      "Die ersten digitalen Markenauftritte entstehen — Film und Web wachsen als ein Designsystem zusammen.",
-  },
-  {
-    year: "2021",
-    title: "3D & Visualisierung",
-    description:
-      "Mit wachsender Nachfrage nach digitalen Produktwelten bauen wir ein eigenes 3D-Team auf.",
-  },
-  {
-    year: "2023",
-    title: "Internationale Kunden",
-    description:
-      "Erste Projekte für Kunden außerhalb der DACH-Region — Pitch Decks werden zur vierten Disziplin.",
+      "Aus der Einzelarbeit wird CultTwenty — eine eigenständige Creative Agency mit klarer Haltung für Film, Web, 3D und Pitch Decks.",
   },
   {
     year: "2026",
     title: "Heute",
     description:
-      "Ein interdisziplinäres Team aus fünf Experten mit über zehn Jahren gemeinsamer Erfahrung.",
+      "CultTwenty entwickelt visuelle Identitäten für Marken mit Anspruch — präzise, hochwertig und interdisziplinär gedacht.",
   },
 ];
 
 export const stats: StatEntry[] = [
-  { value: "10", label: "Jahre Erfahrung" },
+  { value: "2024", label: "Gegründet" },
   { value: "5", label: "Experten im Team" },
   { value: "120+", label: "Realisierte Projekte" },
   { value: "38", label: "Aktive Markenpartner" },

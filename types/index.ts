@@ -44,7 +44,7 @@ export interface WorkItem {
 }
 
 export interface TeamMember {
-  name: string;
+  id: string;
   role: string;
   image: string;
 }
