@@ -22,7 +22,7 @@ export const siteConfig = {
     "CultTwenty",
   ],
   founded: "2024",
-  yearsOfExperience: "2",
+  yearsOfExperience: "6",
   teamSize: "5",
   locale: "de_DE",
   themeColor: "#0a0a0a",

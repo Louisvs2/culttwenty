@@ -11,7 +11,7 @@ import { stats } from "@/lib/data/team";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "CultTwenty ist eine Creative Agency mit fünf Experten für Film, Web, 3D und Pitch Deck Design — gegründet 2024, entstanden aus jahrelanger Einzelarbeit.",
+    "CultTwenty ist eine Creative Agency mit fünf Experten für Film, Web, 3D und Pitch Deck Design — gegründet 2024, entstanden aus der Einzelarbeit seit 2020.",
   alternates: { canonical: "/about" },
 };
 
