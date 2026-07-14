@@ -30,7 +30,7 @@ export const teamMembers: TeamMember[] = [
 
 export const timeline: TimelineEntry[] = [
   {
-    year: "Davor",
+    year: "2020",
     title: "Als Einzelperson",
     description:
       "Vor der Gründung entstehen erste Projekte in Eigenregie — als Einzelperson mit Fokus auf Film, Design und digitale Markenauftritte.",
