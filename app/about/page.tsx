@@ -11,7 +11,7 @@ import { stats } from "@/lib/data/team";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "CultTwenty ist eine Creative Agency mit fünf Experten und zehn Jahren Erfahrung in Film, Web, 3D und Pitch Deck Design.",
+    "CultTwenty ist eine Creative Agency mit fünf Experten für Film, Web, 3D und Pitch Deck Design — gegründet 2024, entstanden aus jahrelanger Einzelarbeit.",
   alternates: { canonical: "/about" },
 };
 
@@ -76,7 +76,7 @@ export default function AboutPage() {
           <SectionTitle
             eyebrow="Team"
             title="Fünf Experten, eine Sprache."
-            description="Zehn Jahre gemeinsame Erfahrung in Regie, Design, Entwicklung und 3D."
+            description="Gebündelte Erfahrung in Regie, Design, Entwicklung und 3D."
           />
           <div className="mt-16">
             <TeamGrid />
@@ -86,7 +86,7 @@ export default function AboutPage() {
 
       <section className="bg-paper-dim py-section">
         <Container>
-          <SectionTitle eyebrow="Werdegang" title="Zehn Jahre CultTwenty." />
+          <SectionTitle eyebrow="Werdegang" title="Von der Einzelarbeit zur Agentur." />
           <div className="mt-16">
             <Timeline />
           </div>

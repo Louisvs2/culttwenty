@@ -50,7 +50,7 @@ export const timeline: TimelineEntry[] = [
 ];
 
 export const stats: StatEntry[] = [
-  { value: "10", label: "Jahre Erfahrung" },
+  { value: "2024", label: "Gegründet" },
   { value: "5", label: "Experten im Team" },
   { value: "120+", label: "Realisierte Projekte" },
   { value: "38", label: "Aktive Markenpartner" },
