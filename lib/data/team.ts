@@ -2,27 +2,27 @@ import type { StatEntry, TeamMember, TimelineEntry } from "@/types";
 
 export const teamMembers: TeamMember[] = [
   {
-    name: "Louis Reinecke",
+    id: "team-01",
     role: "Creative Director & Gründer",
     image: "https://picsum.photos/seed/culttwenty-team-01/800/1000",
   },
   {
-    name: "Mara Lindqvist",
+    id: "team-02",
     role: "Lead Designer",
     image: "https://picsum.photos/seed/culttwenty-team-02/800/1000",
   },
   {
-    name: "Jonah Weber",
+    id: "team-03",
     role: "Director of Photography",
     image: "https://picsum.photos/seed/culttwenty-team-03/800/1000",
   },
   {
-    name: "Elina Voss",
+    id: "team-04",
     role: "Lead Developer",
     image: "https://picsum.photos/seed/culttwenty-team-04/800/1000",
   },
   {
-    name: "Tom Achterberg",
+    id: "team-05",
     role: "3D & Motion Artist",
     image: "https://picsum.photos/seed/culttwenty-team-05/800/1000",
   },
