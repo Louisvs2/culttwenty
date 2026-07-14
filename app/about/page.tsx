@@ -63,8 +63,8 @@ export default function AboutPage() {
 
       <section className="relative h-[70vh] w-full overflow-hidden">
         <Image
-          src="https://loremflickr.com/2000/1400/creative,studio,workspace/all?lock=42"
-          alt="CultTwenty Team bei der Arbeit im Studio"
+          src="/images/projects/about-hero.jpg"
+          alt="CultTwenty Team bei der Arbeit am Set"
           fill
           sizes="100vw"
           className="object-cover"
