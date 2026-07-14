@@ -64,7 +64,7 @@ export default function AboutPage() {
       <section className="relative h-[70vh] w-full overflow-hidden">
         <Image
           src="/images/about-hero.jpg"
-          alt="CultTwenty Team bei der Arbeit"
+          alt="cinema set, team working"
           fill
           sizes="100vw"
           className="object-cover"
