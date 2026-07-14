@@ -63,7 +63,7 @@ export default function AboutPage() {
 
       <section className="relative h-[70vh] w-full overflow-hidden">
         <Image
-          src="/images/about-hero.jpg"
+          src="public/images/projects/about-hero.jpg"
           alt="cinema set, team working"
           fill
           sizes="100vw"
